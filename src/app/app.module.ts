@@ -17,7 +17,9 @@ const appRoutes: Routes = [
   // Each route is just a javascript object in this array.
   { path: '', component: HomeComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'servers', component: ServersComponent }
+  { path: 'servers', component: ServersComponent },
+  // Any users/1, or users/2 the ':id' is dynamic now.
+  { path: 'users/:id/:name', component: UserComponent },
 ];
 
 @NgModule({
