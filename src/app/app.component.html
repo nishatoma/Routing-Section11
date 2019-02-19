@@ -2,11 +2,27 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
+        <!-- --------------------------------------------------------------------------------------- -->
         <!-- Using href reloads the page and the whole state of our program is
         lost. This is not good practice. Instead of href, we use routerLink, a special directive. -->
-        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-        <li role="presentation"><a routerLink="/servers">Servers</a></li>
-        <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
+        <!-- --------------------------------------------------------------------------------------- -->
+        <!-- The class='active' is static, we want to dynamically show wich page
+        we are in. We use the routerLinkActive directive to do so. 
+        routerLinkActiveOptions lets us choose the active tab where it has exactly the route we assign it.
+        -->
+        <li role="presentation" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">
+          <a routerLink="/">Home</a>
+        </li>
+        <li role="presentation" 
+        routerLinkActive="active">
+          <a routerLink="/servers">Servers</a>
+        </li>
+        <li role="presentation" 
+        routerLinkActive="active">
+          <a [routerLink]="['/users']">Users</a>
+        </li>
       </ul>
     </div>
   </div>
