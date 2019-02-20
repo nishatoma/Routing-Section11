@@ -7,6 +7,7 @@ import { ServersComponent } from "./servers/servers.component";
 import { EditServerComponent } from "./servers/edit-server/edit-server.component";
 import { ServerComponent } from "./servers/server/server.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { AuthGuard } from "./auth-guard.service";
 
 const appRoutes: Routes = [
     // Each route is just a javascript object in this array.
@@ -17,7 +18,7 @@ const appRoutes: Routes = [
     ] },
     // We can have nested routes using the 'children' property.
     // The child routes need a SEPARATE server-outlet!
-    { path: 'servers', component: ServersComponent, children: [
+    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
       { path: ':id/edit', component: EditServerComponent },
       { path: ':id', component: ServerComponent },
     ] },
