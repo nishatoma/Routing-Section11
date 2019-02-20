@@ -12,6 +12,7 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   // Each route is just a javascript object in this array.
@@ -26,6 +27,9 @@ const appRoutes: Routes = [
     { path: ':id/edit', component: EditServerComponent },
     { path: ':id', component: ServerComponent },
   ] },
+  {path: 'not-found', component: PageNotFoundComponent},
+  // The ** route covers all routes other than the ones we defined! 
+  {path: '**', redirectTo: '/not-found'}, 
 ];
 
 @NgModule({
@@ -36,7 +40,8 @@ const appRoutes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
