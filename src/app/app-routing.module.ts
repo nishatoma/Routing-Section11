@@ -38,7 +38,10 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        // Using 'useHash' is one way to route on the deployment server.
+        // RouterModule.forRoot(appRoutes, {useHash: true})
+        // But a cleaner one will be used later on.
+        RouterModule.forRoot(appRoutes, {useHash: true})
     ],
     exports: [RouterModule]
 })
