@@ -16,12 +16,16 @@ import { ServersService } from './servers/servers.service';
 const appRoutes: Routes = [
   // Each route is just a javascript object in this array.
   { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'servers', component: ServersComponent },
-  // Any users/1, or users/2 the ':id' is dynamic now.
-  { path: 'users/:id/:name', component: UserComponent },
-  { path: 'servers/:id/edit', component: EditServerComponent },
-  { path: 'servers/:id', component: ServerComponent },
+  { path: 'users', component: UsersComponent, children: [
+    // Any users/1, or users/2 the ':id' is dynamic now.
+    { path: ':id/:name', component: UserComponent },
+  ] },
+  // We can have nested routes using the 'children' property.
+  // The child routes need a SEPARATE server-outlet!
+  { path: 'servers', component: ServersComponent, children: [
+    { path: ':id/edit', component: EditServerComponent },
+    { path: ':id', component: ServerComponent },
+  ] },
 ];
 
 @NgModule({
