@@ -18,7 +18,12 @@ const appRoutes: Routes = [
     ] },
     // We can have nested routes using the 'children' property.
     // The child routes need a SEPARATE server-outlet!
-    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
+    // to protect the children with canActivate, we can use a different hook now!
+    { path: 'servers', 
+    // canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard], 
+    component: ServersComponent, 
+    children: [
       { path: ':id/edit', component: EditServerComponent },
       { path: ':id', component: ServerComponent },
     ] },
