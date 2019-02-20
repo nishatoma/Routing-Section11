@@ -20,6 +20,8 @@ const appRoutes: Routes = [
   { path: 'servers', component: ServersComponent },
   // Any users/1, or users/2 the ':id' is dynamic now.
   { path: 'users/:id/:name', component: UserComponent },
+  { path: 'servers/:id/edit', component: EditServerComponent },
+  { path: 'servers/:id', component: ServerComponent },
 ];
 
 @NgModule({
