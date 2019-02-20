@@ -35,7 +35,8 @@ export class ServerComponent implements OnInit {
   }
 
   editServer() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
+    // Use queryParamsHandling so that our links dont go away when we click edit!!!!
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
   }
 
 }
